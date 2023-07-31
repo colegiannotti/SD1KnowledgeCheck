@@ -10,27 +10,26 @@ namespace KnowledgeCheck1_Calculator
     {
         public static void GetTwoIntFromConsole(out int value1, out int value2)
         {
-            bool result = true;
+            value1 = GetIntFromConsole();
+            value2 = GetIntFromConsole();
+
+        }
+
+        public static int GetIntFromConsole()
+        {
+            bool valid = true;
+            int result;
             do
             {
-                if (!result)
+                if (!valid)
                 {
                     Console.WriteLine("Invalid number entry. Please try again.");
                 }
                 string strNumber1 = Console.ReadLine();
-                result = int.TryParse(strNumber1, out value1);
-            } while (!result);
+                valid = int.TryParse(strNumber1, out result);
+            } while (!valid);
 
-            do
-            {
-                if (!result)
-                {
-                    Console.WriteLine("Invalid number entry. Please try again.");
-                }
-                string strNumber2 = Console.ReadLine();
-                result = int.TryParse(strNumber2, out value2);
-            } while (!result);
-
+            return result;
         }
     }
 }
